@@ -14,9 +14,10 @@ const buttonVariants = {
 };
 
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 0, x: "100vw" },
   visible: {
     opacity: 1,
+    x: 0,
     transition: { type: "spring", delay: 1.5, duration: 1.5 },
   },
   exit: { x: "-100vw", transition: { ease: "easeInOut" } },
@@ -31,7 +32,7 @@ const Home = () => {
       animate="visible"
       exit="ease"
     >
-      <motion.h2 animate={{}}>Welcome to Pizza Joint</motion.h2>
+      <motion.h2>Welcome to Pizza Joint</motion.h2>
       <Link to="/base">
         <motion.button variants={buttonVariants} whileHover="hover">
           Create your Pizza
