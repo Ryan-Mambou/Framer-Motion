@@ -2,24 +2,38 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    boxShadow: "0px 0px 8px rgb(255, 255, 255)",
+    textShadow: "0px 0px 8px rgb(255, 255, 255)",
+    transition: {
+      yoyo: Infinity,
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { type: "spring", delay: 1.5, duration: 1.5 },
+  },
+  exit: { x: "-100vw", transition: { ease: "easeInOut" } },
+};
+
 const Home = () => {
   return (
     <motion.div
+      variants={containerVariants}
       className="home container"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.5, duration: 1.5 }}
+      initial="initial"
+      animate="visible"
+      exit="ease"
     >
       <motion.h2 animate={{}}>Welcome to Pizza Joint</motion.h2>
       <Link to="/base">
-        <motion.button
-          whileHover={{
-            scale: 1.2,
-            boxShadow: "0px 0px 8px rgb(255, 255, 255)",
-            textShadow: "0px 0px 8px rgb(255, 255, 255)",
-          }}
-          animate={{}}
-        >
+        <motion.button variants={buttonVariants} whileHover="hover">
           Create your Pizza
         </motion.button>
       </Link>
